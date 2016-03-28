@@ -21,6 +21,11 @@ class CloudinaryTagLib {
         out << getUrlForAttributes(attrs).imageTag(publicId, attrs)
     }
 
+    def vid = { attrs ->
+        String publicId = attrs.id
+        out << getUrlForAttributes(attrs).videoTag(publicId, attrs)
+    }
+
     /**
      * Renders the url of an image.
      */
