@@ -9,7 +9,7 @@ Setup
 To use the plugin you have to create an account at Cloudinary.com. install plugin and by adding to BuildConfig.groovy:
 ```groovy
 plugins {
-    compile ":grails-cloudinary:LATEST_VERSION"
+    compile ":cloudinary:LATEST_VERSION"
 }
 ```
 
