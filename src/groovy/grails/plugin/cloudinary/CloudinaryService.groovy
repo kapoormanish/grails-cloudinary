@@ -21,8 +21,8 @@ class CloudinaryService {
      * @param options
      * @return
      */
-    CloudinaryUploadResult upload(byte[] imageData, Map<String, Object> options = [:]) {
-        uploadInternally(imageData, options)
+    Map<String, Object> upload(byte[] imageData, Map<String, Object> options = [:]) {
+        cloudinary.uploader().upload(imageData, withCredentials(options))
     }
 
     /**
@@ -31,8 +31,8 @@ class CloudinaryService {
      * @param options
      * @return
      */
-    CloudinaryUploadResult upload(String imageUrl, Map<String, Object> options = [:]) {
-        uploadInternally(imageUrl, options)
+    Map<String, Object> upload(String imageUrl, Map<String, Object> options = [:]) {
+        cloudinary.uploader().upload(imageUrl, withCredentials(options))
     }
 
     /**
@@ -41,8 +41,8 @@ class CloudinaryService {
      * @param options
      * @return
      */
-    CloudinaryUploadResult upload(File imageFile, Map<String, Object> options = [:]) {
-        uploadInternally(imageFile, options)
+    Map<String, Object> upload(File imageFile, Map<String, Object> options = [:]) {
+        cloudinary.uploader().upload(imageFile, withCredentials(options))
     }
 
     /**
@@ -51,31 +51,32 @@ class CloudinaryService {
      * @param options
      * @return
      */
-//    CloudinaryVideoUploadResult uploadVideo(byte[] imageData, Map<String, Object> options = [:]) {
-//        setVideo(options)
-//        uploadInternally(imageData, options)
-//    }
-//
-//    /**
-//     *
-//     * @param imageUrl
-//     * @param options
-//     * @return
-//     */
-//    CloudinaryVideoUploadResult uploadVideo(String imageUrl, Map<String, Object> options = [:]) {
-//        uploadInternally(imageUrl, options)
-//    }
-//
-//    /**
-//     *
-//     * @param imageFile
-//     * @param options
-//     * @return
-//     */
-//    CloudinaryVideoUploadResult uploadVideo(File imageFile, Map<String, Object> options = [:]) {
-//        uploadInternally(imageFile, options)
-//    }
+    Map<String, Object> uploadVideo(byte[] videoData, Map<String, Object> options = [:]) {
+        setVideo(options)
+        cloudinary.uploader().upload(videoData, withCredentials(options))
+    }
 
+    /**
+     *
+     * @param imageUrl
+     * @param options
+     * @return
+     */
+    Map<String, Object> uploadVideo(String videoUrl, Map<String, Object> options = [:]) {
+        setVideo(options)
+        cloudinary.uploader().upload(videoUrl, withCredentials(options))
+    }
+
+    /**
+     *
+     * @param imageFile
+     * @param options
+     * @return
+     */
+    Map<String, Object> uploadVideo(File videoFile, Map<String, Object> options = [:]) {
+        setVideo(options)
+        cloudinary.uploader().upload(videoFile, withCredentials(options))
+    }
     /**
      *
      * @param imageId
@@ -88,9 +89,14 @@ class CloudinaryService {
 
     /////////////////////////////////// internal methods ///////////////////////////////////
 
-    @PackageScope CloudinaryUploadResult uploadInternally(Object imageObject, Map<String, Object> options = [:]) {
+    @PackageScope CloudinaryUploadResult uploadImageInternally(Object imageObject, Map<String, Object> options = [:]) {
         log.debug("Uploading image to cloudinary...")
         toCloudinaryUploadResult(cloudinary.uploader().upload(imageObject, withCredentials(options)))
+    }
+
+   @PackageScope CloudinaryUploadResult uploadVideoInternally(Object imageObject, Map<String, Object> options = [:]) {
+        log.debug("Uploading video to cloudinary...")
+        toCloudinaryVideoUploadResult(cloudinary.uploader().upload(imageObject, withCredentials(options)))
     }
 
 
@@ -143,10 +149,10 @@ class CloudinaryService {
         ) : null
     }
 
-//    private Map<String, Object> setVideo(Map<String, Object> options){
-//        options.'resource_type' = 'video'
-//        return options
-//    }
+    private Map<String, Object> setVideo(Map<String, Object> options){
+        options.'resource_type' = 'video'
+        return options
+    }
 
     private Map<String, Object> withCredentials(Map<String, Object> options) {
         options.'api_key' = cloudinaryConfig.apiKey

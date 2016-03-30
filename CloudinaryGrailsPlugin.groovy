@@ -5,7 +5,7 @@ import grails.plugin.cloudinary.CloudinaryService
 
 class CloudinaryGrailsPlugin {
     // the plugin version
-    def version = "1.0"
+    def version = "1.0.3"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.4 > *"
     // resources that are excluded from plugin packaging
@@ -17,9 +17,9 @@ class CloudinaryGrailsPlugin {
     def title = "Grails Cloudinary Plugin" // Headline display name of the plugin
     def author = "Meni Lubetkin"
     def authorEmail = "menilub@gmail.com"
-    def description = '''Simplifies the usage of the cloudinary service at http://cloudinary.com/. based on ver 0.3 created by Simon Buettner'''
-    def documentation = "https://bitbucket.org/sbuettner/grails-cloudinary"
-    def license = "APACHE"
+    def description = '''Simplifies the usage of the cloudinary service at http://cloudinary.com/. based on initail work created by Simon Buettner'''
+    def documentation = "https://github.com/menilub/grails-cloudinary"
+    def license = "Apache"
 
     // Details of company behind the plugin (if there is one)
 //    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]

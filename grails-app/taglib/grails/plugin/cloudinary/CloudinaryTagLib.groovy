@@ -5,9 +5,9 @@ import com.cloudinary.Url
 
 class CloudinaryTagLib {
 
-    static defaultEncodeAs = 'html'
-
-    static encodeAsForTags = [img: 'raw']
+//    static defaultEncodeAs = 'html'
+//
+//    static encodeAsForTags = [img: 'raw']
 
     static namespace = "cl"
 
@@ -32,6 +32,15 @@ class CloudinaryTagLib {
     def src = { attrs ->
         String publicId = attrs.id
         out << getUrlForAttributes(attrs).generate(publicId)
+    }
+
+    /**
+     *
+     */
+    def urlTag = { attrs ->
+            String publicId = attrs.id
+            attrs.remove('id')
+            out << cloudinaryService.cloudinary.url().imageTag(publicId,attrs)
     }
 
     /**
