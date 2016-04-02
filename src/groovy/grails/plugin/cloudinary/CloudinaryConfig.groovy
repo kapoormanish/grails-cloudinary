@@ -6,17 +6,15 @@ package grails.plugin.cloudinary
 class CloudinaryConfig {
 
     String apiKey
+    String apiSecret
+    String cloudName
 
-	String apiSecret
-
-	String cloudName
-
-	@Override
-	public String toString() {
-		return "CloudinaryConfig{" +
-				"apiKey='" + apiKey + '\'' +
-				", apiSecret='" + (apiSecret ? '*******' : "") + '\'' +
-				", cloudName='" + cloudName + '\'' +
-				"} " + super.toString();
-	}
+    @Override
+    String toString() {
+        "CloudinaryConfig{" +
+        "apiKey='" + apiKey + "', " +
+        "apiSecret='" + (apiSecret ? '*******' : "") + "', " +
+        "cloudName='" + cloudName + "'" +
+        "} " + super.toString()
+    }
 }

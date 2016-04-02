@@ -1,21 +1,18 @@
 package grails.plugin.cloudinary
 
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
+import groovy.util.logging.Slf4j
 
 /**
  * Validates the necessary cloudinary account information.
  */
+@Slf4j
 class CloudinaryConfigValidator {
 
-    private final static Logger log = LoggerFactory.getLogger(CloudinaryConfigValidator)
-
-    public static boolean validate(CloudinaryConfig cloudinaryConfig) {
-        boolean valid = true
-        if(!cloudinaryConfig.apiSecret || !cloudinaryConfig.apiKey || !cloudinaryConfig.cloudName) {
-            log.error("Cloudinary config not valid: ${cloudinaryConfig}")
-            valid = false
+    static boolean validate(CloudinaryConfig cloudinaryConfig) {
+        if (!cloudinaryConfig.apiSecret || !cloudinaryConfig.apiKey || !cloudinaryConfig.cloudName) {
+            log.error('Cloudinary config not valid: {}', cloudinaryConfig)
+            return false
         }
-        valid
+        true
     }
 }

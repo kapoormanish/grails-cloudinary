@@ -16,11 +16,10 @@ class CloudinaryConfigValidatorSpec extends Specification {
 
 		where:
 		apiKey | apiSecret | cloudName || valid
-        '1'    | '1'       | 'C'       || true
-        null   | '1'       | 'C'       || false
+		'1'    | '1'       | 'C'       || true
+		null   | '1'       | 'C'       || false
 		'1'    | null      | 'C'       || false
 		'1'    | '1'       | null      || false
 		null   | null      | null      || false
 	}
-
 }
