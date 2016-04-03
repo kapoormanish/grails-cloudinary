@@ -26,23 +26,23 @@ class CloudinaryUploadResultSpec extends Specification {
 
         when:
         def json = new JsonSlurper().parseText(rawJsonResult)
-        CloudinaryUploadResult cloudinaryUploadResult = CloudinaryService.toCloudinaryUploadResult(json)
+        CloudinaryUploadResult result = CloudinaryService.toCloudinaryUploadResult(json)
 
         then:
-        cloudinaryUploadResult.publicId == json.'public_id'
-        cloudinaryUploadResult.version == json.version
-        cloudinaryUploadResult.signature == json.signature
-        cloudinaryUploadResult.url == json.url
-        cloudinaryUploadResult.secureUrl == json.'secure_url'
-        cloudinaryUploadResult.width == json.width
-        cloudinaryUploadResult.height == json.height
-        cloudinaryUploadResult.format == json.format
-        cloudinaryUploadResult.resourceType == json.'resource_type'
-        cloudinaryUploadResult.bytes == json.bytes
-        cloudinaryUploadResult.type == json.type
+        result.publicId == json.'public_id'
+        result.version == json.version
+        result.signature == json.signature
+        result.url == json.url
+        result.secureUrl == json.'secure_url'
+        result.width == json.width
+        result.height == json.height
+        result.format == json.format
+        result.resourceType == json.'resource_type'
+        result.bytes == json.bytes
+        result.type == json.type
 
         // Verify date parsing
-        Calendar calendar = cloudinaryUploadResult.createdAt.toCalendar()
+        Calendar calendar = result.createdAt.toCalendar()
         calendar.get(Calendar.YEAR) == 2013
         calendar.get(Calendar.MONTH) == 6
         calendar.get(Calendar.DAY_OF_MONTH) == 31
@@ -50,5 +50,4 @@ class CloudinaryUploadResultSpec extends Specification {
         calendar.get(Calendar.MINUTE) == 33
         calendar.get(Calendar.SECOND) == 21
     }
-
 }

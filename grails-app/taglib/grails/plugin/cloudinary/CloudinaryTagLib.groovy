@@ -17,37 +17,27 @@ class CloudinaryTagLib {
      * Renders an image tag by creating a transformation.
      */
     def img = { attrs ->
-        String publicId = attrs.id
-        out << getUrlForAttributes(attrs).imageTag(publicId, attrs)
+        out << getUrlForAttributes(attrs).imageTag(attrs.id, attrs)
     }
 
     def vid = { attrs ->
-        String publicId = attrs.id
-        out << getUrlForAttributes(attrs).videoTag(publicId, attrs)
+        out << getUrlForAttributes(attrs).videoTag(attrs.id, attrs)
     }
 
     /**
      * Renders the url of an image.
      */
     def src = { attrs ->
-        String publicId = attrs.id
-        out << getUrlForAttributes(attrs).generate(publicId)
+        out << getUrlForAttributes(attrs).generate(attrs.id)
     }
 
-    /**
-     *
-     */
     def urlTag = { attrs ->
-            String publicId = attrs.id
-            attrs.remove('id')
-            out << cloudinaryService.cloudinary.url().imageTag(publicId,attrs)
+        out << cloudinaryService.cloudinary.url().imageTag(attrs.remove('id'), attrs)
     }
 
     /**
      * Returns a url object populated with right format, transformation and other
      * cloudinary related url artifacts.
-     * @param attrs
-     * @return
      */
     protected Url getUrlForAttributes(attrs) {
         String format = attrs.format

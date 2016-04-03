@@ -22,26 +22,11 @@ class CloudinaryVideoUploadResult {
     String duration
 
     @Override
-    public String toString() {
-        return "CloudinaryUploadResult{" +
-            "publicId='" + publicId + '\'' +
-            ", version=" + version +
-            ", signature='" + signature + '\'' +
-            ", width=" + width +
-            ", height=" + height +
-            ", format='" + format + '\'' +
-            ", resourceType='" + resourceType + '\'' +
-            ", createdAt=" + createdAt +
-            ", bytes=" + bytes +
-            ", type='" + type + '\'' +
-            ", etag='" + etag + '\'' +
-            ", url='" + url + '\'' +
-            ", secureUrl='" + secureUrl + '\'' +
-            ", audioJson='" + audioJson + '\'' +
-            ", videoJson='" + videoJson + '\'' +
-            ", frameRate='" + frameRate + '\'' +
-            ", bitRate='" + bitRate + '\'' +
-            ", duration='" + duration + '\'' +
-            "} " + super.toString();
+    String toString() {
+        getClass().simpleName + '{' + metaClass.properties.findAll { it.name != 'class' }.collect {
+            def value = this[it.name]
+            String quote = it.type == String && value != null ? "'" : ''
+            it.name + '=' + quote + value + quote
+        }.join(', ') + '} ' + super.toString()
     }
 }
