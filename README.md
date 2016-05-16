@@ -5,9 +5,11 @@ Version	1.0
 
 Grails Version	2.3.0 > *
 
-Author	Meni Lubetkin
+Author:	Meni Lubetkin
 
 Plugin based on the Cloudinary Java Library (https://github.com/cloudinary/cloudinary_java) that simplifies the usage of the cloudinary image api service inside your grails application.
+
+Album - Sample application based on the plugin: https://github.com/menilub/album
 
 initial work by  Simon Buettner was done at: https://bitbucket.org/sbuettner/grails-cloudinary/overview
 
@@ -71,5 +73,9 @@ cloudinaryService.delete(publicId)
 
 **More info:**
  http://cloudinary.com/documentation/upload_images#data_upload_options
+
+**Sample Application:**
+ https://github.com/menilub/album
+
 
 **Apache License**
