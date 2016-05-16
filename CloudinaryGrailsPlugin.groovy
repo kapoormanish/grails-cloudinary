@@ -4,7 +4,7 @@ import grails.plugin.cloudinary.CloudinaryConfigValidator
 import grails.plugin.cloudinary.CloudinaryService
 
 class CloudinaryGrailsPlugin {
-    def version = "1.0.3"
+    def version = "1.0.4"
     def grailsVersion = "2.4 > *"
     def title = "Grails Cloudinary Plugin"
     def author = "Meni Lubetkin"
